@@ -65,7 +65,7 @@ def default_bc_cfg() -> dict:
         "wandb_run_path": "pollen-robotics/mjlab_microduck/69u48n8l",
         "checkpoint_name": "model_9750.pt",
         "checkpoint_path": None,
-        "hf_checkpoint": None,
+        "hf_checkpoint": "hf://pollen-robotics/microduck-training/bundles/microduck_stand/69u48n8l_9750",
         "coef": 1.0,               # MSE weight (actions in rad)
         "learning_rate": 3e-4,     # dedicated Adam (PPO's adaptive-KL LR must not throttle the BC)
         "gate_tilt_deg": 35.0,     # stand expert teaches frames with tilt > this
@@ -79,7 +79,7 @@ def default_bc_cfg() -> dict:
         "anchor_wandb_run_path": "pollen-robotics/mjlab_microduck/441tzs6d",
         "anchor_checkpoint_name": "model_3750.pt",
         "anchor_checkpoint_path": None,
-        "anchor_hf_checkpoint": None,
+        "anchor_hf_checkpoint": "hf://pollen-robotics/microduck-training/bundles/velocity2/441tzs6d_3750",
         "anchor_coef": 1.0,
         "anchor_tilt_deg": 25.0,
         # Body-control routing (2026-10, branch improve_velstand2). When body_slice is set,
