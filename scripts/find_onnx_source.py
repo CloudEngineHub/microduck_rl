@@ -48,7 +48,11 @@ def main() -> int:
         for it in its:
             f = r.file(f"model_{it}.pt")
             d = work / r.id
-            _retry(lambda: f.download(root=str(d), replace=True), f"download {path} {it}")
+            try:
+                _retry(lambda: f.download(root=str(d), replace=True), f"download {path} {it}")
+            except RuntimeError as e:  # a flaky/missing file must not end the whole scan
+                print(f"[find] {path} {it}: {e}", flush=True)
+                continue
             ck = d / f"model_{it}.pt"
             ok = onnx_matches_checkpoint(onnx_path, ck)
             ck.unlink()
